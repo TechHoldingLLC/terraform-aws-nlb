@@ -5,11 +5,13 @@
 ## NLB related variables
 variable "create_nlb" {
   description = "Create NLB"
+  type        = bool
   default     = false
 }
 
 variable "create_nlb_listener" {
   description = "Create NLB Listener"
+  type        = bool
   default     = false
 }
 
@@ -68,34 +70,45 @@ variable "access_logs" {
 }
 
 variable "enable_cross_zone_load_balancing" {
+  description = "If true, cross-zone load balancing of the load balancer will be enabled."
+  type        = bool
+  default     = true
+}
+
+variable "enable_deletion_protection" {
   description = "If true, deletion of the load balancer will be disabled via the AWS API."
-  type        = string
-  default     = false
+  type        = bool
+  default     = true
 }
 
 ## Listener and Target Group related variables 
 variable "nlb_arn" {
   description = "NLB arn" # It is required if you have set the value of var.create_nlb = false
+  type        = string
   default     = ""
 }
 
 variable "target_group_name" {
   description = "Target group name"
+  type        = string
   default     = ""
 }
 
 variable "port" {
   description = "Listener port"
+  type        = number
   default     = 80
 }
 
 variable "protocol" {
   description = "Protocol for Listener & Target Group"
+  type        = string
   default     = "TCP"
 }
 
 variable "target_type" {
   description = "Type of target that you must specify when registering targets with this target group"
+  type        = string
   default     = "ip"
 }
 
@@ -107,6 +120,7 @@ variable "deregistration_delay" {
 
 variable "vpc_id" {
   description = "VPC id"
+  type        = string
   default     = ""
 }
 

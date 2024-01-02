@@ -33,7 +33,8 @@ No modules.
 | <a name="input_create_nlb"></a> [create\_nlb](#input\_create\_nlb) | Create NLB | `bool` | `false` | no |
 | <a name="input_create_nlb_listener"></a> [create\_nlb\_listener](#input\_create\_nlb\_listener) | Create NLB Listener | `bool` | `false` | no |
 | <a name="input_deregistration_delay"></a> [deregistration\_delay](#input\_deregistration\_delay) | Amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. | `number` | `60` | no |
-| <a name="input_enable_cross_zone_load_balancing"></a> [enable\_cross\_zone\_load\_balancing](#input\_enable\_cross\_zone\_load\_balancing) | If true, deletion of the load balancer will be disabled via the AWS API. | `string` | `false` | no |
+| <a name="input_enable_cross_zone_load_balancing"></a> [enable\_cross\_zone\_load\_balancing](#input\_enable\_cross\_zone\_load\_balancing) | If true, cross-zone load balancing of the load balancer will be enabled. | `bool` | `true` | no |
+| <a name="input_enable_deletion_protection"></a> [enable\_deletion\_protection](#input\_enable\_deletion\_protection) | If true, deletion of the load balancer will be disabled via the AWS API. | `bool` | `true` | no |
 | <a name="input_health_check"></a> [health\_check](#input\_health\_check) | Listener Rule Health Check | `map(string)` | `{}` | no |
 | <a name="input_internal"></a> [internal](#input\_internal) | If true, the LB will be internal | `bool` | `true` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of the LB | `string` | `""` | no |

@@ -11,6 +11,7 @@ resource "aws_lb" "nlb" {
   enable_cross_zone_load_balancing = var.enable_cross_zone_load_balancing
   subnets                          = var.subnets
   security_groups                  = var.security_group_ids
+  enable_deletion_protection       = var.enable_deletion_protection
   tags = merge(
     {
       "Name" = var.name
