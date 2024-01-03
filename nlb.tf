@@ -4,14 +4,15 @@
 
 #-------------To Create Network Load Balancer-------------#
 resource "aws_lb" "nlb" {
-  count                            = var.create_nlb ? 1 : 0
-  name                             = var.name
-  internal                         = var.internal
-  load_balancer_type               = "network"
-  enable_cross_zone_load_balancing = var.enable_cross_zone_load_balancing
-  subnets                          = var.subnets
-  security_groups                  = var.security_group_ids
-  enable_deletion_protection       = var.enable_deletion_protection
+  count                                                        = var.create_nlb ? 1 : 0
+  name                                                         = var.name
+  internal                                                     = var.internal
+  load_balancer_type                                           = "network"
+  enable_cross_zone_load_balancing                             = var.enable_cross_zone_load_balancing
+  subnets                                                      = var.subnets
+  security_groups                                              = var.security_group_ids
+  enable_deletion_protection                                   = var.enable_deletion_protection
+  enforce_security_group_inbound_rules_on_private_link_traffic = var.enforce_security_group_inbound_rules_on_private_link_traffic
   tags = merge(
     {
       "Name" = var.name
