@@ -81,6 +81,12 @@ variable "enable_deletion_protection" {
   default     = true
 }
 
+variable "enforce_security_group_inbound_rules_on_private_link_traffic" {
+  description = "If on, then inbound security group rules are enforced for traffic originating from a PrivateLink, o/w set it off"
+  type        = string
+  default     = "on"
+}
+
 ## Listener and Target Group related variables 
 variable "nlb_arn" {
   description = "NLB arn" # It is required if you have set the value of var.create_nlb = false

@@ -5,13 +5,14 @@ Below is an examples of calling this module.
 ### If you want to create NLB only, pass below inputs according to your requirements.
 ```
 module "nlb" {
-  create_nlb                 = true    
-  source                     = "./nlb"
-  name                       = "my-nlb"
-  subnets                    = module.subnet_nlb.private_subnet_ids
-  security_group_ids         = [module.security_group_nlb.id]       
-  internal                   = true             # Give false value if you want to make it public.
-  enable_deletion_protection = true
+  create_nlb                                                   = true    
+  source                                                       = "./nlb"
+  name                                                         = "my-nlb"
+  subnets                                                      = module.subnet_nlb.private_subnet_ids
+  security_group_ids                                           = [module.security_group_nlb.id]       
+  internal                                                     = true             # Give false value if you want to make it public.
+  enable_deletion_protection                                   = true
+  enforce_security_group_inbound_rules_on_private_link_traffic = "off"
   providers  = {
     aws = aws
   }
@@ -53,19 +54,20 @@ module "nlb" {
   source             = "./nlb"
 
   # NLB
-  create_nlb                 = true
-  name                       = "my-nlb"
-  subnets                    = module.subnet_nlb.private_subnet_ids
-  security_group_ids         = [module.security_group_nlb.id]
-  internal                   = true             # Give false value if you want to make it public.
-  enable_deletion_protection = true             
+  create_nlb                                                   = true
+  name                                                         = "my-nlb"
+  subnets                                                      = module.subnet_nlb.private_subnet_ids
+  security_group_ids                                           = [module.security_group_nlb.id]
+  internal                                                     = true             # Give false value if you want to make it public.
+  enable_deletion_protection                                   = true     
+  enforce_security_group_inbound_rules_on_private_link_traffic = "off"        
 
   # NLB Listener & Target Group
-  create_nlb_listener        = true
-  target_group_name          = "my-nlb_listener-tg"
-  port                       = var.port
-  deregistration_delay       = 60
-  vpc_id                     = module.vpc.id
+  create_nlb_listener                                          = true
+  target_group_name                                            = "my-nlb_listener-tg"
+  port                                                         = var.port
+  deregistration_delay                                         = 60
+  vpc_id                                                       = module.vpc.id
   health_check = {
     interval            = 30
     timeout             = 20       
